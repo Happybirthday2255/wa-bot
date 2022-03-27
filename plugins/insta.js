@@ -1,0 +1,23 @@
+const { instagram, bot, getBuffer } = require('../lib/index')
+
+bot(
+  {
+    pattern: 'insta ?(.*)',
+    fromMe: true,
+    desc: 'Download Instagram Posts',
+    type: 'download',
+  },
+  async (message, match) => {
+    match = match || message.reply_message.text
+    if (!match) return await message.sendMessage('_Example : insta url_')
+    const result = await instagram(match)
+    if (!result.length)
+      return await message.sendMessage('*Not found*', {
+        quoted: message.quoted,
+      })
+    for (const url of result) {
+      const { buffer, type } = await getBuffer(url)
+      await message.sendMessage(buffer, { quoted: message.quoted }, type)
+    }
+  }
+)
