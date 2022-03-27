@@ -10,13 +10,13 @@ bot(
     )
       return await message.sendMessage('*Reply to image/video*')
     return await message.sendMessage(
-      await sticker(
+      await sticker('str',
         await message.reply_message.downloadAndSaveMediaMessage('sticker'),
         message.reply_message.image
           ? 1
           : message.reply_message.seconds < 10
-          ? 2
-          : 3
+            ? 2
+            : 3
       ),
       { isAnimated: !!message.reply_message.video },
       'sticker'
