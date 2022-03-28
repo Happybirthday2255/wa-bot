@@ -34,7 +34,7 @@ bot(
 		const isImAdmin = await isAdmin(participants, message.client.user.jid)
 		if (!isImAdmin) return await message.sendMessage(`_I'm not admin._`)
 		if (!match || match.startsWith('+'))
-			return await message.sendMessage('Example : add 91987654321')
+			return await message.sendMessage('*Example : add 91987654321*')
 		match = match.split(' ').map((num) => numToJid(num))
 		await message.Add(match)
 	}

@@ -50,7 +50,7 @@ bot(
 			)
 		if (!match)
 			return await message.sendMessage(
-				`*Give me title,artists,url*\n*aritists or url os optional*`
+				`*Give me title,artists,url*\n*aritists or url is optional*`
 			)
 		const [title, artists, url] = match.split(',')
 		return await message.sendMessage(
