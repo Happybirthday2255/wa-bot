@@ -60,7 +60,7 @@ bot(
 		const result = await y2mate.dl(vid[1], 'audio')
 		const { buffer } = await getBuffer(result)
 		return await message.sendMessage(
-			addAudioMetaData(
+			await addAudioMetaData(
 				buffer,
 				title,
 				author,

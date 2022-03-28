@@ -35,7 +35,7 @@ bot(
 		const result = await yts((vid && vid[1]) || match)
 		const { id, author, title, metadata } = result[0]
 		return await message.sendMessage(
-			addAudioMetaData(
+			await addAudioMetaData(
 				await song(id),
 				title,
 				author,
