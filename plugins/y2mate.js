@@ -15,8 +15,7 @@ bot(
 		if (match.startsWith('y2mate;')) {
 			const [_, q, id] = match.split(';')
 			const result = await y2mate.dl(id, 'video', q)
-			const { buffer, type } = await getBuffer(result)
-			return await message.sendMessage(buffer, { quoted: message.quoted }, type)
+			await message.sendFromUrl(result)
 		}
 		if (!ytIdRegex.test(match))
 			return await message.sendMessage('*Give me a yt link!*', {
@@ -59,6 +58,8 @@ bot(
 		const { author, title, metadata } = video[0]
 		const result = await y2mate.dl(vid[1], 'audio')
 		const { buffer } = await getBuffer(result)
+		if (!buffer)
+			return await message.sendMessage(result, { quoted: message.data })
 		return await message.sendMessage(
 			await addAudioMetaData(
 				buffer,
