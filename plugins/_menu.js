@@ -1,5 +1,5 @@
 const bot = require('../lib/events')
-const { ctt, addSpace, textToStylist } = require('../lib/index')
+const { ctt, addSpace, textToStylist } = require('../lib/')
 
 bot.addCommand(
 	{ pattern: 'menu ?(.*)', fromMe: true, dontAddCommandList: true },
