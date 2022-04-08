@@ -86,7 +86,7 @@ bot(
 				},
 			})
 			.then(async () => {
-				await message.sendMessage(`_${key.toUpperCase()}: ${value}`)
+				await message.sendMessage(`_${key.toUpperCase()}: ${value}_`)
 			})
 			.catch(async (error) => {
 				await message.sendMessage(error)

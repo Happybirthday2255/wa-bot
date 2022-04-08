@@ -46,9 +46,7 @@ bot(
 					try {
 						require('./' + plugin_name)
 					} catch (e) {
-						await message.sendMessage(
-							Lang.INVALID_PLUGIN + '```\n' + e.stack + '```'
-						)
+						await message.sendMessage(e.stack, { quoted: message.quoted })
 						return unlinkSync('./plugins/' + plugin_name + '.js')
 					}
 					await setPlugin(plugin_name, url)
