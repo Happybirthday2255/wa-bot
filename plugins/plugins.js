@@ -64,7 +64,12 @@ bot(
 )
 
 bot(
-	{ pattern: 'remove ?(.*)', fromMe: true, desc: 'Delete External Plugins' },
+	{
+		pattern: 'remove ?(.*)',
+		fromMe: true,
+		desc: 'Delete External Plugins',
+		type: 'misc',
+	},
 	async (message, match) => {
 		if (!match) return await message.sendMessage('*Example : remove mforward*')
 		if (match == 'all') {
@@ -74,7 +79,8 @@ bot(
 			)
 		}
 		const isDeleted = await delPlugin(match)
-		if (!isDeleted) return await message.sendMessage('')
+		if (!isDeleted)
+			return await message.sendMessage(`*Plugin ${match} not found*`)
 		delete require.cache[require.resolve('./' + match + '.js')]
 		unlinkSync('./plugins/' + match + '.js')
 		return await message.sendMessage('_Plugin Deleted\n_*Restart BOT*')
