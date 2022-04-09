@@ -1,4 +1,4 @@
-const { bot, yts, song, video, addAudioMetaData } = require('../lib/index')
+const { bot, yts, song, video, addAudioMetaData } = require('../lib/')
 const ytIdRegex =
 	/(?:http(?:s|):\/\/|)(?:(?:www\.|)youtube(?:\-nocookie|)\.com\/(?:watch\?.*(?:|\&)v=|embed|shorts\/|v\/)|youtu\.be\/)([-_0-9A-Za-z]{11})/
 

@@ -1,4 +1,4 @@
-const { facebook, bot, genButtonMessage } = require('../lib/index')
+const { facebook, bot, genButtonMessage, isUrl } = require('../lib/')
 
 bot(
 	{
@@ -8,7 +8,7 @@ bot(
 		type: 'download',
 	},
 	async (message, match) => {
-		match = match || message.reply_message.text
+		match = isUrl(match || message.reply_message.text)
 		if (!match) return await message.sendMessage('_Example : fb url_')
 		const result = await facebook(match)
 		if (!result.length)

@@ -1,4 +1,4 @@
-const { tiktok, bot, getBuffer } = require('../lib/index')
+const { tiktok, bot, isUrl } = require('../lib/index')
 
 bot(
 	{
@@ -8,7 +8,7 @@ bot(
 		type: 'download',
 	},
 	async (message, match) => {
-		match = match || message.reply_message.text
+		match = isUrl(match || message.reply_message.text)
 		if (!match) return await message.sendMessage('_Example : tiktok url_')
 		const result = await tiktok(match)
 		if (!result)

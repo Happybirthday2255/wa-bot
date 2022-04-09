@@ -1,4 +1,10 @@
-const { y2mate, bot, getBuffer, genButtonMessage } = require('../lib/index')
+const {
+	y2mate,
+	bot,
+	getBuffer,
+	genButtonMessage,
+	addAudioMetaData,
+} = require('../lib/')
 const ytIdRegex =
 	/(?:http(?:s|):\/\/|)(?:(?:www\.|)youtube(?:\-nocookie|)\.com\/(?:watch\?.*(?:|\&)v=|embed|shorts\/|v\/)|youtu\.be\/)([-_0-9A-Za-z]{11})/
 

@@ -81,6 +81,6 @@ bot(
 			return await message.sendMessage(`*Plugin ${match} not found*`)
 		delete require.cache[require.resolve('./' + match + '.js')]
 		unlinkSync('./plugins/' + match + '.js')
-		return await message.sendMessage('_Plugin Deleted\n_*Restart BOT*')
+		return await message.sendMessage('_Plugin Deleted_\n*Restart BOT*')
 	}
 )

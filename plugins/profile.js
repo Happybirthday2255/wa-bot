@@ -1,8 +1,13 @@
-const { bot } = require('../lib/index')
+const { bot, getBuffer } = require('../lib/')
 const fm = true
 
 bot(
-	{ pattern: 'jid', fromMe: fm, desc: '', type: 'misc' },
+	{
+		pattern: 'jid',
+		fromMe: fm,
+		desc: 'Give jid of chat/user',
+		type: 'misc',
+	},
 	async (message, match) => {
 		return await message.sendMessage(
 			message.mention[0] || message.reply_message.jid || message.jid
@@ -11,7 +16,12 @@ bot(
 )
 
 bot(
-	{ pattern: 'block', fromMe: fm, desc: '', type: 'misc' },
+	{
+		pattern: 'block',
+		fromMe: fm,
+		desc: 'Block a person',
+		type: 'misc',
+	},
 	async (message, match) => {
 		const id =
 			message.mention[0] ||
@@ -24,7 +34,12 @@ bot(
 )
 
 bot(
-	{ pattern: 'unblock', fromMe: fm, desc: '', type: 'misc' },
+	{
+		pattern: 'unblock',
+		fromMe: fm,
+		desc: 'Unblock a person',
+		type: 'misc',
+	},
 	async (message, match) => {
 		const id =
 			message.mention[0] ||
@@ -33,5 +48,38 @@ bot(
 		if (!id) return await message.sendMessage('*Give me a person*')
 		await message.sendMessage('_Unblocked_')
 		await message.Unblock(id)
+	}
+)
+
+bot(
+	{
+		pattern: 'pp',
+		fromMe: fm,
+		desc: 'Change Profile Picture',
+		type: 'misc',
+	},
+	async (message, match) => {
+		if (!message.reply_message || !message.reply_message.image)
+			return await message.sendMessage('*Reply to a image*')
+		await message.updateProfilePicture(
+			await message.reply_message.downloadMediaMessage()
+		)
+		return await message.sendMessage('_Profile Picture Updated_')
+	}
+)
+
+bot(
+	{
+		pattern: 'whois',
+		fromMe: fm,
+		desc: 'To get PP and about',
+		type: 'misc',
+	},
+	async (message, match) => {
+		const id = message.mention[0] || message.reply_message.jid || message.jid
+		const url = await message.profilePictureUrl(id)
+		const { status } = await message.fetchStatus(id)
+		const { buffer } = await getBuffer(url)
+		return await message.sendMessage(buffer, { caption: status }, 'image')
 	}
 )

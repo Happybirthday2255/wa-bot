@@ -1,4 +1,4 @@
-const { bot, getBuffer } = require('../lib/index')
+const { bot, isUrl } = require('../lib/')
 bot(
 	{
 		pattern: 'upload ?(.*)',
@@ -7,7 +7,7 @@ bot(
 		type: 'download',
 	},
 	async (message, match) => {
-		match = match || message.reply_message.text
+		match = isUrl(match || message.reply_message.text)
 		if (!match) return await message.sendMessage('_Example : upload url_')
 		await message.sendFromUrl(match)
 	}

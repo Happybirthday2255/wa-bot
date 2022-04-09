@@ -1,4 +1,4 @@
-const { bot } = require('../lib/index')
+const { bot } = require('../lib/')
 bot(
 	{
 		pattern: 'react ?(.*)',

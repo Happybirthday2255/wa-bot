@@ -1,4 +1,4 @@
-const { bot, addSpace, forwardOrBroadCast } = require('../lib/index')
+const { bot, addSpace, forwardOrBroadCast } = require('../lib/')
 bot(
 	{
 		pattern: 'tag ?(.*)',

@@ -1,4 +1,4 @@
-const { bot, getUrl } = require('../lib/index')
+const { bot, getUrl } = require('../lib/')
 
 bot(
 	{

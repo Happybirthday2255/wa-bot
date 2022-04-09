@@ -1,4 +1,4 @@
-const { forwardOrBroadCast, bot, parsedJid } = require('../lib/index')
+const { forwardOrBroadCast, bot, parsedJid } = require('../lib/')
 
 bot(
 	{

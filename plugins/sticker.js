@@ -4,7 +4,7 @@ const {
 	addExif,
 	bot,
 	addAudioMetaData,
-} = require('../lib/index')
+} = require('../lib/')
 const fm = true
 
 bot(
@@ -50,7 +50,7 @@ bot(
 			)
 		if (!match)
 			return await message.sendMessage(
-				`*Give me title,artists,url*\n*aritists or url is optional*`
+				`*Give me title,artists,url*\n*aritists or url os optional*`
 			)
 		const [title, artists, url] = match.split(',')
 		return await message.sendMessage(

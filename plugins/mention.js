@@ -4,7 +4,7 @@ const {
 	mentionMessage,
 	enableMention,
 	clearFiles,
-} = require('../lib/index')
+} = require('../lib/')
 
 bot(
 	{
