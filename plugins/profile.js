@@ -17,6 +17,20 @@ bot(
 
 bot(
 	{
+		pattern: 'left',
+		fromMe: fm,
+		dec: 'To leave from group',
+		type: 'misc',
+		onlyGroup: true,
+	},
+	async (message, match) => {
+		if (match) await message.sendMessage(match)
+		return await message.leftFromGroup(message.jid)
+	}
+)
+
+bot(
+	{
 		pattern: 'block',
 		fromMe: fm,
 		desc: 'Block a person',
